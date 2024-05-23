@@ -1,0 +1,23 @@
+<h1>My lists</h1>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li style="list-style-type: none">
+      <%= link_to list.name, list_path(list), style: 'text-decoration: none' %>
+      <%= link_to "Delete",
+        list_path(list),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </li>
+  <% end %>
+</ul>
+
+
+<div>
+  <%= simple_form_for(@list) do |f| %>
+
+    <%= f.input :name %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
